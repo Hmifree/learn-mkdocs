@@ -1,5 +1,123 @@
-site_name: 我的第一个站点
+# 项目信息 / Project information
+site_name: CodeTing
+# site_url: https://hello-ctf.com/
+site_author: 刘科厅
+site_description: 个人博客, 算法入门到进阶, C/C++研发工程师
+
+
+# 仓库信息 / Repository 
+repo_name: CodeTing
+repo_url: https://github.com/Hmifree/learn-mkdocs
+edit_uri: https://github.com/Hmifree/learn-mkdocs
+
+# 版权声明 / Copyright
+copyright: Copyright &copy; 2024 CodeTing
+
+# 自定义配置部分 / Configuration
+theme:
+  name: material
+  custom_dir: overrides
+  language: zh
+  features:
+    # - announce.dismiss        # 通知关闭
+    - content.action.edit       # 编辑操作
+    - content.action.view       # 查看操作
+    - content.code.annotate     # 代码注释
+    - content.code.copy         # 复制代码
+    - content.tabs.link         # 标签链接
+    - content.tooltips          # 工具提示
+    # - header.autohide         # 自动隐藏头部
+    # - navigation.expand       # 展开导航
+    - navigation.indexes        # 导航索引
+    - navigation.instant      # 即时导航
+    # - navigation.prune        # 导航修剪
+    # - navigation.sections     # 导航节
+    - navigation.tabs         # 导航标签
+    # - navigation.tabs.sticky  # 固定导航标签
+    - navigation.top            # 导航顶部
+    - navigation.footer         # 导航底部
+    - navigation.tracking       # 导航跟踪
+    - search.highlight          # 搜索高亮
+    - search.share              # 搜索分享
+    - search.suggest            # 搜索建议
+    - toc.follow                # 目录跟随
+    # - toc.integrate           # 目录整合
+
+  # 调色板配置 (好看)
+  palette:
+    - scheme: default
+      primary: white
+      accent: blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+
+    - scheme: slate
+      primary: black
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+
+  # 字体配置        
+  font:
+    text: Noto Sans SC
+    code: Fira Code
+
+  favicon: assets/images/favicon.png
+
+  logo: assets/images/logo.png
+  
+  icon:
+    logo: logo
+    repo: fontawesome/brands/github
+    edit: material/file-edit-outline
+
+
+# 额外配置
+extra:
+  disqus: 'open' # 评论系统
+
+  generator: false  
+
+  # 页脚社交媒体
+  social:
+    - icon: fontawesome/brands/twitter 
+      link: https://twitter.com/CodeTinger
+    - icon: fontawesome/brands/github
+      link: https://github.com/Hmifree
+    - icon: fontawesome/brands/bilibili
+      link: https://space.bilibili.com/1283743210
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:<probiuslinx@gmail.com> 
+
+  # 谷歌分析
+  analytics:
+    provider: google
+    property: G-V9998CDNR1
+
+
 
 nav:
-  - 首页: index.md  
-  - 测试页: test.md
+  - Home: index.md
+  - C语言: 
+    - C语言/1.初识C语言.md
+    - C语言/2.分支和循环语句.md
+    - C语言/3.函数.md
+    - C语言/4.数组.md
+    - C语言/5.操作符详解.md
+    - C语言/6.结构体.md
+    - C语言/7.实用调试技巧.md
+    - C语言/8.数据的存储.md
+    - C语言/9.指针的进阶.md
+    - C语言/10.字符串和内存函数.md
+    - C语言/11.自定义函数(结构体+枚举+联合).md
+    - C语言/12.动态内存管理.md
+    - C语言/13.程序的编译(预处理+链接).md
+    - C语言/14.文件操作.md
+  - 初阶数据结构:
+    - 初阶数据结构/1.前言.md
+    - 初阶数据结构/2.算法的时间复杂度和空间复杂度.md
+    - 初阶数据结构/3.顺序表_链表.md
+  - 英语:
+    - 英语/句子成分以及五大句型.md
