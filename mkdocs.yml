@@ -119,5 +119,11 @@ nav:
     - 初阶数据结构/1.前言.md
     - 初阶数据结构/2.算法的时间复杂度和空间复杂度.md
     - 初阶数据结构/3.顺序表_链表.md
+  - C++进阶:
+    - C++-senior/AVL.md
+    - C++-senior/红黑树.md
+    - C++-senior/红黑树实现map和set.md
+    - C++-senior/hash.md
   - 英语:
     - 英语/句子成分以及五大句型.md
+
