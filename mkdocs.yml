@@ -20,8 +20,8 @@ theme:
   language: zh
   features:
     # - announce.dismiss        # 通知关闭
-    - content.action.edit       # 编辑操作
-    - content.action.view       # 查看操作
+    #- content.action.edit       # 编辑操作
+    #- content.action.view       # 查看操作
     - content.code.annotate     # 代码注释
     - content.code.copy         # 复制代码
     - content.tabs.link         # 标签链接
@@ -99,31 +99,41 @@ extra:
 
 
 nav:
-  - Home: index.md
-  - C语言: 
-    - C语言/1.初识C语言.md
-    - C语言/2.分支和循环语句.md
-    - C语言/3.函数.md
-    - C语言/4.数组.md
-    - C语言/5.操作符详解.md
-    - C语言/6.结构体.md
-    - C语言/7.实用调试技巧.md
-    - C语言/8.数据的存储.md
-    - C语言/9.指针的进阶.md
-    - C语言/10.字符串和内存函数.md
-    - C语言/11.自定义函数(结构体+枚举+联合).md
-    - C语言/12.动态内存管理.md
-    - C语言/13.程序的编译(预处理+链接).md
-    - C语言/14.文件操作.md
-  - 初阶数据结构:
-    - 初阶数据结构/1.前言.md
-    - 初阶数据结构/2.算法的时间复杂度和空间复杂度.md
-    - 初阶数据结构/3.顺序表_链表.md
-  - C++进阶:
-    - C++-senior/AVL.md
-    - C++-senior/红黑树.md
-    - C++-senior/红黑树实现map和set.md
-    - C++-senior/hash.md
-  - 英语:
-    - 英语/句子成分以及五大句型.md
+  - 个人介绍: index.md
+  - C和C++: 
+    - C-C++/初识C语言.md
+    - C-C++/分支和循环语句.md
+    - C-C++/函数.md
+    - C-C++/数组.md
+    - C-C++/操作符详解.md
+    - C-C++/结构体.md
+    - C-C++/实用调试技巧.md
+    - C-C++/数据的存储.md
+    - C-C++/指针的进阶.md
+    - C-C++/字符串和内存函数.md
+    - C-C++/自定义函数(结构体+枚举+联合).md
+    - C-C++/动态内存管理.md
+    - C-C++/程序的编译(预处理+链接).md
+    - C-C++/文件操作.md
+    - C-C++/数据结构前言.md
+    - C-C++/算法的时间复杂度和空间复杂度.md
+    - C-C++/顺序表_链表.md
+    - C-C++/start c++.md
+    - C-C++/Template advanced.md
+    - C-C++/AVL.md
+    - C-C++/红黑树.md
+    - C-C++/红黑树实现map和set.md
+    - C-C++/hash.md
+    - C-C++/Smart pointers.md
+  - Linux:
+    - Linux/Processcontrol.md
+    - Linux/juniorIO.md
+    - Linux/Inter-process communication.md
+  - 算法:
+    - algorithm/quicksort.md
+    - algorithm/stack.md
+  - MYSQL数据库:
+    - mysqldatabase/MYSQLinstall.md
+  - 项目:
+    - project/High concurrent memory.md
 
