@@ -13,21 +13,25 @@
       
       
       
+        <link rel="prev" href="../Processcontrol/">
       
       
-      <link rel="icon" href="/assets/images/favicon.png">
+        <link rel="next" href="../Inter-process%20communication/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
     
     
       
-        <title>CodeTing</title>
+        <title>基础IO - CodeTing</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.10ba22f1.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.10ba22f1.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,7 +50,7 @@
       
     
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -81,6 +85,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#io" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -91,9 +100,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="/." title="CodeTing" class="md-header__button md-logo" aria-label="CodeTing" data-md-component="logo">
+    <a href="../.." title="CodeTing" class="md-header__button md-logo" aria-label="CodeTing" data-md-component="logo">
       
-  <img src="/assets/images/logo.png" alt="logo">
+  <img src="../../assets/images/logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -110,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              基础IO
             
           </span>
         </div>
@@ -224,7 +233,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
     
@@ -243,7 +252,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/C-C%2B%2B/%E5%88%9D%E8%AF%86C%E8%AF%AD%E8%A8%80/" class="md-tabs__link">
+        <a href="../../C-C%2B%2B/%E5%88%9D%E8%AF%86C%E8%AF%AD%E8%A8%80/" class="md-tabs__link">
           
   
     
@@ -259,11 +268,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="/Linux/Processcontrol/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Processcontrol/" class="md-tabs__link">
           
   
     
@@ -283,7 +294,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/algorithm/quicksort/" class="md-tabs__link">
+        <a href="../../algorithm/quicksort/" class="md-tabs__link">
           
   
     
@@ -303,7 +314,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/mysqldatabase/MYSQLinstall/" class="md-tabs__link">
+        <a href="../../mysqldatabase/MYSQLinstall/" class="md-tabs__link">
           
   
     
@@ -323,7 +334,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/project/High%20concurrent%20memory/" class="md-tabs__link">
+        <a href="../../project/High%20concurrent%20memory/" class="md-tabs__link">
           
   
     
@@ -358,9 +369,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="CodeTing" class="md-nav__button md-logo" aria-label="CodeTing" data-md-component="logo">
+    <a href="../.." title="CodeTing" class="md-nav__button md-logo" aria-label="CodeTing" data-md-component="logo">
       
-  <img src="/assets/images/logo.png" alt="logo">
+  <img src="../../assets/images/logo.png" alt="logo">
 
     </a>
     CodeTing
@@ -387,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -495,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E5%88%9D%E8%AF%86C%E8%AF%AD%E8%A8%80/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E5%88%9D%E8%AF%86C%E8%AF%AD%E8%A8%80/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -516,7 +527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E5%88%86%E6%94%AF%E5%92%8C%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E5%88%86%E6%94%AF%E5%92%8C%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -537,7 +548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E5%87%BD%E6%95%B0/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E5%87%BD%E6%95%B0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -558,7 +569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E6%95%B0%E7%BB%84/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E6%95%B0%E7%BB%84/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -579,7 +590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E6%93%8D%E4%BD%9C%E7%AC%A6%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E6%93%8D%E4%BD%9C%E7%AC%A6%E8%AF%A6%E8%A7%A3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -600,7 +611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E7%BB%93%E6%9E%84%E4%BD%93/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E7%BB%93%E6%9E%84%E4%BD%93/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -621,7 +632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E5%AE%9E%E7%94%A8%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E5%AE%9E%E7%94%A8%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -642,7 +653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E5%82%A8/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E5%82%A8/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -663,7 +674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E6%8C%87%E9%92%88%E7%9A%84%E8%BF%9B%E9%98%B6/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E6%8C%87%E9%92%88%E7%9A%84%E8%BF%9B%E9%98%B6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -684,7 +695,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E5%86%85%E5%AD%98%E5%87%BD%E6%95%B0/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E5%86%85%E5%AD%98%E5%87%BD%E6%95%B0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -705,7 +716,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%28%E7%BB%93%E6%9E%84%E4%BD%93%2B%E6%9E%9A%E4%B8%BE%2B%E8%81%94%E5%90%88%29/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0%28%E7%BB%93%E6%9E%84%E4%BD%93%2B%E6%9E%9A%E4%B8%BE%2B%E8%81%94%E5%90%88%29/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -726,7 +737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -747,7 +758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%BC%96%E8%AF%91%28%E9%A2%84%E5%A4%84%E7%90%86%2B%E9%93%BE%E6%8E%A5%29/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E7%A8%8B%E5%BA%8F%E7%9A%84%E7%BC%96%E8%AF%91%28%E9%A2%84%E5%A4%84%E7%90%86%2B%E9%93%BE%E6%8E%A5%29/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -768,7 +779,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -789,7 +800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%89%8D%E8%A8%80/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%89%8D%E8%A8%80/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -810,7 +821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E7%AE%97%E6%B3%95%E7%9A%84%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%92%8C%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -831,7 +842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E9%A1%BA%E5%BA%8F%E8%A1%A8_%E9%93%BE%E8%A1%A8/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E9%A1%BA%E5%BA%8F%E8%A1%A8_%E9%93%BE%E8%A1%A8/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -852,7 +863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/start%20c%2B%2B/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/start%20c%2B%2B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -873,7 +884,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/Template%20advanced/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/Template%20advanced/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -894,7 +905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/AVL/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/AVL/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -915,7 +926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E7%BA%A2%E9%BB%91%E6%A0%91/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E7%BA%A2%E9%BB%91%E6%A0%91/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -936,7 +947,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/%E7%BA%A2%E9%BB%91%E6%A0%91%E5%AE%9E%E7%8E%B0map%E5%92%8Cset/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/%E7%BA%A2%E9%BB%91%E6%A0%91%E5%AE%9E%E7%8E%B0map%E5%92%8Cset/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -957,7 +968,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/hash/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/hash/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -978,7 +989,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/C-C%2B%2B/Smart%20pointers/" class="md-nav__link">
+      <a href="../../C-C%2B%2B/Smart%20pointers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1003,8 +1014,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -1017,17 +1030,20 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -1038,7 +1054,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Linux
@@ -1052,7 +1068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/Linux/Processcontrol/" class="md-nav__link">
+      <a href="../Processcontrol/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1070,10 +1086,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/Linux/juniorIO/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    基础IO
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1082,6 +1118,71 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      铺垫
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-" class="md-nav__link">
+    <span class="md-ellipsis">
+      重新使用C文件接口 --- 对比一下重定向
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      认识文件操作的系统接口
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fd" class="md-nav__link">
+    <span class="md-ellipsis">
+      引入文件描述符fd &amp;&amp; 对文件的理解
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      理解重定向 理解缓冲区
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1094,7 +1195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/Linux/Inter-process%20communication/" class="md-nav__link">
+      <a href="../Inter-process%20communication/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1166,7 +1267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/algorithm/quicksort/" class="md-nav__link">
+      <a href="../../algorithm/quicksort/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1187,7 +1288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/algorithm/stack/" class="md-nav__link">
+      <a href="../../algorithm/stack/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1257,7 +1358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/mysqldatabase/MYSQLinstall/" class="md-nav__link">
+      <a href="../../mysqldatabase/MYSQLinstall/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1327,7 +1428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/project/High%20concurrent%20memory/" class="md-nav__link">
+      <a href="../../project/High%20concurrent%20memory/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1365,6 +1466,61 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      铺垫
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#c-" class="md-nav__link">
+    <span class="md-ellipsis">
+      重新使用C文件接口 --- 对比一下重定向
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      认识文件操作的系统接口
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fd" class="md-nav__link">
+    <span class="md-ellipsis">
+      引入文件描述符fd &amp;&amp; 对文件的理解
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      理解重定向 理解缓冲区
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1376,8 +1532,170 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  <!-- News -->
 
+
+<!-- Event -->
+
+
+<!-- Tags -->
+
+
+<!-- Actions -->
+<!-- Actions -->
+
+
+  <!-- Edit button -->
+  
+
+  <!-- View button -->
+  
+
+
+<!-- Page content -->
+<h1 id="io">基础IO</h1>
+<h2 id="_1">铺垫</h2>
+<p>问：建立一个空文件需要不要在磁盘上占据空间？</p>
+<p>答：要占据。</p>
+<p>a. 文件 = 内容 + 属性。</p>
+<p>b. 访问文件之前，得先打开文件。而修改文件时，文件必须被加载到内存。无法直接修改硬件上的文件。</p>
+<p>问：谁来打开文件？</p>
+<p>答. 进程在打开文件。</p>
+<p>问：一个进程可以打开多少个文件？</p>
+<p>答. 进程可以打开多个文件。</p>
+<p>问：一定时间段内，系统中存在多个进程，也可能存在更多的被打开的文件，操作系统要不要管理多个被进程打开的文件呢？</p>
+<p>答. 肯定要。</p>
+<p>问：操作系统如何管理呢？</p>
+<p>答. 先描述，在组织（内核中一定要有描述被打开文件的结构体，并用其定义对象）</p>
+<p>到这里我们就明白学习文件就是弄清楚进程和文件的关系，struct task_struct 和 struct XXX的关系？</p>
+<p>问：系统中是不是所有文件都被进程打开了呢？</p>
+<p>答：不是</p>
+<p>问：没有被打开的文件在哪？</p>
+<p>答： 在磁盘中，叫做<strong>磁盘文件</strong>。上面的叫做<strong>内存文件</strong>。</p>
+<h2 id="c-">重新使用C文件接口 --- 对比一下重定向</h2>
+<p>先使用基本的C语言写一段代码
+<img alt="img" src="../../image/Linux/juniorIO/p1.png" />
+运行之后出现
+<img alt="img" src="../../image/Linux/juniorIO/p2.png" />
+然后将str删掉，结果log.txt里面就是空，说明w写文件会清空原始文件,那么再让我们重新写一下重定向
+<img alt="img" src="../../image/Linux/juniorIO/p3.png" />
+我们现在把w改成a
+<img alt="img" src="../../image/Linux/juniorIO/p4.png" />
+<img alt="img" src="../../image/Linux/juniorIO/p5.png" />
+发现有非常相似之处</p>
+<h2 id="_2">认识文件操作的系统接口</h2>
+<p>现在我们来介绍一下fwrite</p>
+<p>size_t fwrite ( const void * ptr, size_t size, size_t count, FILE * stream );</p>
+<p>ptr是读取文件, size是读取文件大小, count是读取几个这样的大小, stream是写入文件, 返回值是count。</p>
+<p><img alt="img" src="../../image/Linux/juniorIO/p6.png" /></p>
+<p>问：什么叫做当前路径？</p>
+<p>现在我们用getpid获取他的pid，然后我们ls proc/pid -l, 我们会发现一个cwd -&gt; 当前路径</p>
+<p>这里有一个函数叫做chdir(路径),可以修改当前路径。但是我们查看log.txt里面的内容还是0，知道程序运行结束才可以看到里面有内容。</p>
+<p>下面我们来介绍fopen的r模式</p>
+<p>一行一行读取,用fgets</p>
+<p>char * fgets ( char * str, int num, FILE * stream );</p>
+<p>str:读取的文件内容放入的地方。</p>
+<p>num:该地方的大小。</p>
+<p>stream: 从哪里读入。</p>
+<p>问：程序默认打开的文件流？</p>
+<p>stdin(标准输入,键盘设备)</p>
+<p>stdout(标准输出, 显示器设备)</p>
+<p>stderr(标准错误, 显示器设备)</p>
+<p>stdin、stdout、stderr都可以直接被使用</p>
+<p>访问文件不仅仅有C语言的接口，操作系统必须提供对应的访问文件的系统调用。</p>
+<p>下面介绍一下open函数</p>
+<p>int open(const char *pathname, int flags);</p>
+<p>int open(const char *pathname, int flags, mode_t mode);</p>
+<p>flag是用位图的方式来确定是否调用内部函数,用 | 操作符就可以，mode是为了O_CREAT创建新文件给权限的(所给权限还受umask影响)。</p>
+<p>以O_WDNOLY打开不会清空先前文件的内容，要加上O_TRUNC才能清空。 O_APPEND是追加。</p>
+<p>fd默认前1、2、3被称之为：标准输入、标准输出、标准错误。open返回值前3个已经被占取，所以我们打开文件fd都是从3开始。</p>
+<p>结论：C语言的文件接口，本质就是封装了系统调用。</p>
+<p>问：FILE是什么？</p>
+<p>答：FILE是C语言标准库自己封装的一个结构体，必定要封装特定的fd!!!打印stdin-&gt;fileno就可以查看no;</p>
+<p>问：为什么C语言要封装?</p>
+<p>答：为了保证自己的跨平台性。</p>
+<h2 id="fd">引入文件描述符fd &amp;&amp; 对文件的理解</h2>
+<p>问：进程怎么知道打开了那些文件？为什么后续访问文件，用系统调用接口，都必须使用fd呢？</p>
+<p>答：task_struct 是进程管理里面存在struct file_struct *files指向struct files_struct。files_struct 里面还包含了 struct file * fd_array[]
+一个指针数组。指针数组指向的就是每一个struct file.然后修改文件的缓冲区，最后加载到磁盘上。</p>
+<p>结论：文件描述符的本质，就是数组下标。</p>
+<p>问：如何理解一切皆文件？</p>
+<p>答：就是函数指针，来接受写的，读的来获取，屏蔽了硬件的差异。</p>
+<p>fd的分配规则： 最小的没有被使用的数组下标，会分配给最新打开的文件。</p>
+<h2 id="_3">理解重定向 理解缓冲区</h2>
+<p>close(1),然后再open一个新文件，然后在printf，就会发现printf写入的是那个新文件，这是由于fd = 1的stdout被改成了新文件，
+所以写入的是新文件。但是这样写会比较麻烦，所以有一个int dup2(int oldfd, int newfd);将old拷贝到new，所以dup2(fd, 1)
+就可以完成缓冲区。</p>
+
+<!-- Source file information -->
+
+
+<!-- Was this page helpful? -->
+
+  
+
+
+
+
+<!-- Previous and next pages link -->
+<nav
+class="md-footer__inner md-grid"
+aria-label="页脚"
+
+>
+
+<!-- Link to previous page -->
+
+  
+  <a
+    href="../Processcontrol/"
+    class="md-footer__link md-footer__link--prev"
+    aria-label="上一页: 进程控制"
+    rel="prev"
+  >
+    <div class="md-footer__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+    </div>
+    <div class="md-footer__title">
+      <span class="md-footer__direction">
+        上一页
+      </span>
+      <div class="md-ellipsis">
+        进程控制
+      </div>
+    </div>
+  </a>
+
+
+<!-- Link to next page -->
+
+  
+  <a
+    href="../Inter-process%20communication/"
+    class="md-footer__link md-footer__link--next"
+    aria-label="下一页: 进程间通信"
+    rel="next"
+  >
+    <div class="md-footer__title">
+      <span class="md-footer__direction">
+        下一页
+      </span>
+      <div class="md-ellipsis">
+        进程间通信
+      </div>
+    </div>
+    <div class="md-footer__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+    </div>
+  </a>
+
+</nav>
+
+<!-- Comment system -->
+
+                
               </article>
             </div>
           
@@ -1397,6 +1715,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../Processcontrol/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 进程控制">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                进程控制
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Inter-process%20communication/" class="md-footer__link md-footer__link--next" aria-label="下一页: 进程间通信">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                进程间通信
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
@@ -1465,10 +1821,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "/", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "content.tooltips", "navigation.indexes", "navigation.instant", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "/assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.code.copy", "content.tabs.link", "content.tooltips", "navigation.indexes", "navigation.instant", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="/assets/javascripts/bundle.bd41221c.min.js"></script>
+      <script src="../../assets/javascripts/bundle.bd41221c.min.js"></script>
       
     
   </body>
