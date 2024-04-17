@@ -125,15 +125,27 @@ nav:
     - C-C++/红黑树实现map和set.md
     - C-C++/hash.md
     - C-C++/Smart pointers.md
+    - C-C++/Special category design.md
   - Linux:
     - Linux/Processcontrol.md
     - Linux/juniorIO.md
     - Linux/Inter-process communication.md
+    - Linux/Network Fundamentals1.md
+    - Linux/Network programming sockets.md
   - 算法:
     - algorithm/quicksort.md
     - algorithm/stack.md
+    - algorithm/monotony stack queue.md
   - MYSQL数据库:
     - mysqldatabase/MYSQLinstall.md
+    - mysqldatabase/mysql Database Basics.md
+    - mysqldatabase/mysql Operational library.md
+    - mysqldatabase/Table operations.md
+    - mysqldatabase/table data type.md
+    - mysqldatabase/Table constraints.md
+    - mysqldatabase/MySQL basic queries.md
+    - mysqldatabase/Built-in functions.md
+    - mysqldatabase/Composite Query.md
   - 项目:
     - project/High concurrent memory.md
 
