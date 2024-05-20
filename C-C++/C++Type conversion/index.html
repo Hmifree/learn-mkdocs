@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../%E7%BB%93%E6%9E%84%E4%BD%93/">
+        <link rel="prev" href="../Special%20category%20design/">
       
       
-        <link rel="next" href="../%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E5%82%A8/">
+        <link rel="next" href="../IO%20stream/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>实用调试技巧 - CodeTing</title>
+        <title>C++的类型转换 - CodeTing</title>
       
     
     
@@ -85,6 +85,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#c" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -114,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              实用调试技巧
+              C++的类型转换
             
           </span>
         </div>
@@ -635,17 +640,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../%E5%AE%9E%E7%94%A8%E8%B0%83%E8%AF%95%E6%8A%80%E5%B7%A7/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -654,7 +652,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -1042,10 +1039,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../C%2B%2BType%20conversion/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    C++的类型转换
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1054,6 +1071,62 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#static_cast" class="md-nav__link">
+    <span class="md-ellipsis">
+      static_cast
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reinterpret_cast" class="md-nav__link">
+    <span class="md-ellipsis">
+      reinterpret_cast
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#const_cast" class="md-nav__link">
+    <span class="md-ellipsis">
+      const_cast
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic_cast" class="md-nav__link">
+    <span class="md-ellipsis">
+      dynamic_cast
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1729,6 +1802,52 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#static_cast" class="md-nav__link">
+    <span class="md-ellipsis">
+      static_cast
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reinterpret_cast" class="md-nav__link">
+    <span class="md-ellipsis">
+      reinterpret_cast
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#const_cast" class="md-nav__link">
+    <span class="md-ellipsis">
+      const_cast
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic_cast" class="md-nav__link">
+    <span class="md-ellipsis">
+      dynamic_cast
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1761,7 +1880,94 @@
 
 
 <!-- Page content -->
+<h1 id="c">C++的类型转换</h1>
+<p>有一定关联的类型才可以互相转换C</p>
+<p>整形之间 隐式类型转换</p>
+<p>整形和浮点数 隐式类型转换</p>
+<p>bool和整形 bool和指针 隐式类型转换</p>
+<p>指针和整形 强制类型转换</p>
+<p>不同类型的指针之间  强制类型转换</p>
+<p>CPP</p>
+<p>构造函数只支持</p>
+<p>内置类型-&gt;自定义类型之间，本质借助构造 隐式类型转换  如：string和const char*</p>
+<p>自定义类型之间-&gt;内置类型, 本质要重载一个operator类型 隐式类型转换 如：下面的A</p>
+<pre><code class="language-cpp">class A
+{
+public:
+    operator int()
+    {
+        return _a1 + _a2;
+    }
+private:
+    int _a1 = 1;
+    int _a2 = 2;
+};
+</code></pre>
+<p>自定义类型之间-&gt;自定义类型之间，本质借助构造，隐式类型转换 如：initializer_list和容器</p>
+<h2 id="static_cast">static_cast</h2>
+<p>static_cast用于非多态类型的转换（静态转换），类型编译器隐式执行的任何类型转换都可用
+static_cast，但它不能用于两个不相关的类型进行转换，隐式类型转换</p>
+<h2 id="reinterpret_cast">reinterpret_cast</h2>
+<p>reinterpret_cast操作符通常为操作数的位模式提供较低层次的重新解释，用于将一种类型转换
+为另一种不同的类型,强制类型转换</p>
+<h2 id="const_cast">const_cast</h2>
+<p>const_cast最常用的用途就是删除变量的const属性，方便赋值</p>
+<p>强制类型转换,但是为什么要把去掉const属性单独拿出来?</p>
+<p>就是专门提醒,去掉const属性是有一些内存可见优化的风险,要注意是否加了volatile</p>
+<pre><code class="language-cpp">int main() {
+    volatile const int a1 = 2;
+    int* p1 = const_cast&lt;int*&gt;(&amp;a1);
+    *p1 = 3;
+    cout &lt;&lt; a1 &lt;&lt; endl;
+    cout &lt;&lt; *p1 &lt;&lt; endl;
+}
+</code></pre>
+<h2 id="dynamic_cast">dynamic_cast</h2>
+<p>向上转型：子类对象指针/引用-&gt;父类指针/引用(不需要转换，赋值兼容规则)
+向下转型：父类对象指针/引用-&gt;子类指针/引用(用dynamic_cast转型是安全的)</p>
+<p>注意：</p>
+<ol>
+<li>dynamic_cast只能用于父类含有虚函数的类</li>
+<li>dynamic_cast会先检查是否能转换成功，能成功则转换，不能则返回0</li>
+</ol>
+<pre><code class="language-cpp">class A
+{
+public:
+    virtual void f() {}
 
+    int _a = 0;
+};
+
+class B : public A
+{
+public:
+    int _b = 1;
+};
+
+void fun(A* pa)
+{
+    // 向下转换：父-&gt;子
+    // pa指向子类对象，转回子类，是安全的
+    // pa指向父类对象，转回子类，是不安全的，存在越界的风险问题
+
+    // 不安全
+    //B* pb = (B*)pa;
+
+    //  pa指向子类对象，转回子类，正常转换
+    //  pa指向父类对象，转回子类，转换失败
+    B* pb = dynamic_cast&lt;B*&gt;(pa);
+    if (pb)
+    {
+        cout &lt;&lt; pb &lt;&lt; endl;
+        cout &lt;&lt; pb-&gt;_a &lt;&lt; endl;
+        cout &lt;&lt; pb-&gt;_b &lt;&lt; endl;
+    }
+    else
+    {
+        cout &lt;&lt; &quot;转换失败&quot; &lt;&lt; endl;
+    }
+}
+</code></pre>
 
 <!-- Source file information -->
 
@@ -1784,9 +1990,9 @@ aria-label="页脚"
 
   
   <a
-    href="../%E7%BB%93%E6%9E%84%E4%BD%93/"
+    href="../Special%20category%20design/"
     class="md-footer__link md-footer__link--prev"
-    aria-label="上一页: 结构体"
+    aria-label="上一页: 特殊类设计"
     rel="prev"
   >
     <div class="md-footer__button md-icon">
@@ -1798,7 +2004,7 @@ aria-label="页脚"
         上一页
       </span>
       <div class="md-ellipsis">
-        结构体
+        特殊类设计
       </div>
     </div>
   </a>
@@ -1808,9 +2014,9 @@ aria-label="页脚"
 
   
   <a
-    href="../%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E5%82%A8/"
+    href="../IO%20stream/"
     class="md-footer__link md-footer__link--next"
-    aria-label="下一页: 数据的存储"
+    aria-label="下一页: C++的IO流"
     rel="next"
   >
     <div class="md-footer__title">
@@ -1818,7 +2024,7 @@ aria-label="页脚"
         下一页
       </span>
       <div class="md-ellipsis">
-        数据的存储
+        C++的IO流
       </div>
     </div>
     <div class="md-footer__button md-icon">
@@ -1856,7 +2062,7 @@ aria-label="页脚"
       <nav class="md-footer__inner md-grid" aria-label="页脚" >
         
           
-          <a href="../%E7%BB%93%E6%9E%84%E4%BD%93/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 结构体">
+          <a href="../Special%20category%20design/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 特殊类设计">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1866,20 +2072,20 @@ aria-label="页脚"
                 上一页
               </span>
               <div class="md-ellipsis">
-                结构体
+                特殊类设计
               </div>
             </div>
           </a>
         
         
           
-          <a href="../%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AD%98%E5%82%A8/" class="md-footer__link md-footer__link--next" aria-label="下一页: 数据的存储">
+          <a href="../IO%20stream/" class="md-footer__link md-footer__link--next" aria-label="下一页: C++的IO流">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 下一页
               </span>
               <div class="md-ellipsis">
-                数据的存储
+                C++的IO流
               </div>
             </div>
             <div class="md-footer__button md-icon">

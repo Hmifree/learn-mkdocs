@@ -470,6 +470,10 @@
       
         
       
+        
+      
+        
+      
     
     
       
@@ -1026,6 +1030,48 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C-C%2B%2B/C%2B%2BType%20conversion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++的类型转换
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../C-C%2B%2B/IO%20stream/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++的IO流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1188,6 +1234,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    网络编程套接
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1197,6 +1254,43 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      认识TCP协议
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      认识UDP协议
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1218,6 +1312,8 @@
   
     
     
+      
+        
       
         
       
@@ -1310,6 +1406,27 @@
   
   <span class="md-ellipsis">
     单调栈单调队列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/Tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    树
   </span>
   
 
@@ -1670,6 +1787,32 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      认识TCP协议
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      认识UDP协议
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1702,6 +1845,27 @@
 
 <!-- Page content -->
 <h1 id="_1">网络编程套接</h1>
+<p><strong>IP地址</strong>:标定了主机的唯一性</p>
+<p>真正的网络通信过程,本质其实是进程间通信.</p>
+<p>将数据在主机间转发仅仅是手段,机器收到后,需要将数据交付给指定的进程.</p>
+<p><strong>端口号</strong>是标识特定主机上的网络.进程的唯一性.</p>
+<p>一个进程可以标识多个端口号,但一个端口号只能标定一个进程</p>
+<p>IP+port = 套接字</p>
+<h2 id="tcp">认识TCP协议</h2>
+<ul>
+<li>传输层协议</li>
+<li>有连接</li>
+<li>可靠传输</li>
+<li>面向字节流</li>
+</ul>
+<h2 id="udp">认识UDP协议</h2>
+<ul>
+<li>传输层协议</li>
+<li>无连接</li>
+<li>不可靠传输</li>
+<li>面向数据报</li>
+</ul>
+<p>网络规定,所以网络数据,都必须是大端</p>
 
 <!-- Source file information -->
 

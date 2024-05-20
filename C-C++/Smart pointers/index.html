@@ -472,6 +472,10 @@
       
         
       
+        
+      
+        
+      
     
     
       
@@ -1041,6 +1045,48 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../C%2B%2BType%20conversion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++的类型转换
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../IO%20stream/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    C++的IO流
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1225,6 +1271,8 @@
       
         
       
+        
+      
     
     
       
@@ -1310,6 +1358,27 @@
   
   <span class="md-ellipsis">
     单调栈单调队列
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algorithm/Tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    树
   </span>
   
 
@@ -1932,6 +2001,122 @@ private:
     T* _ptr;
 };
 </code></pre>
+<p>shared_ptr还存在一个删除器,应用场景</p>
+<pre><code class="language-cpp">template&lt;class T&gt;
+struct DeleteArray
+{
+    void operator()(T* ptr)
+    {
+        delete[] ptr;
+    }
+};
+
+int main()
+{
+    shared_ptr&lt;ListNode&gt; p1(new ListNode(10));
+    shared_ptr&lt;ListNode&gt; p2(new ListNode[10], DeleteArray&lt;ListNode&gt;());
+    shared_ptr&lt;FILE&gt; p3(fopen(&quot;Test.cpp&quot;, &quot;r&quot;), [](FILE* ptr) {fclose(ptr); });
+    return 0;
+}
+</code></pre>
+<p>改造过后的shared_ptr</p>
+<pre><code class="language-cpp">template&lt;class T&gt;
+class shared_ptr
+{
+public:
+
+    template&lt;class D&gt;
+    shared_ptr(T* ptr, D del)
+        :_ptr(ptr)
+        ,_pcount(new int(1))
+        ,_del(del)
+    {}
+
+    // RAII
+    shared_ptr(T* ptr = nullptr)
+        :_ptr(ptr)
+        , _pcount(new int(1))
+    {}
+
+    // sp2(sp1)
+    shared_ptr(const shared_ptr&lt;T&gt;&amp; sp)
+    {
+        _ptr = sp._ptr;
+        _pcount = sp._pcount;
+
+        // 拷贝时++计数
+        ++(*_pcount);
+    }
+
+    // sp1 = sp4
+    // sp4 = sp4;
+    // sp1 = sp2;
+    shared_ptr&lt;T&gt;&amp; operator=(const shared_ptr&lt;T&gt;&amp; sp)
+    {
+        //if (this != &amp;sp)
+        if (_ptr != sp._ptr)
+        {
+            release();
+
+            _ptr = sp._ptr;
+            _pcount = sp._pcount;
+
+            // 拷贝时++计数
+            ++(*_pcount);
+        }
+
+        return *this;
+    }
+
+    void release()
+    {
+        // 说明最后一个管理对象析构了，可以释放资源了
+        if (--(*_pcount) == 0)
+        {
+            cout &lt;&lt; &quot;delete:&quot; &lt;&lt; _ptr &lt;&lt; endl;
+            delete _ptr;
+            delete _pcount;
+        }
+    }
+
+    ~shared_ptr()
+    {
+        // 析构时，--计数，计数减到0，
+        release();
+    }
+
+    int use_count()
+    {
+        return *_pcount;
+    }
+
+    // 像指针一样
+    T&amp; operator*()
+    {
+        return *_ptr;
+    }
+
+    T* operator-&gt;()
+    {
+        return _ptr;
+    }
+
+    T* get() const
+    {
+        return _ptr;
+    }
+private:
+    T* _ptr;
+    int* _pcount;
+    function&lt;void(T*)&gt; _del = [](T* ptr){delete ptr;};
+};
+</code></pre>
+<p>再谈内存泄漏:</p>
+<p>什么是内存泄漏：内存泄漏指因为疏忽或错误造成程序未能释放已经不再使用的内存的情况。内
+存泄漏并不是指内存在物理上的消失，而是应用程序分配某段内存后，因为设计错误，失去了对
+该段内存的控制，因而造成了内存的浪费。
+内存泄漏的危害：长期运行的程序出现内存泄漏，影响很大，如操作系统、后台服务等等，出现
+内存泄漏会导致响应越来越慢，最终卡死。</p>
 
 <!-- Source file information -->
 
