@@ -203,6 +203,7 @@ Singleton Singleton::_sint(1, 1, { "四川","北京" });
 
 懒汉
 ```cpp
+// 1.
 class Singleton
 {
 public:
@@ -259,4 +260,48 @@ private:
 };
 Singleton* Singleton::_psint = nullptr;
 Singleton::GC Singleton::gc;
+
+
+// 2.
+class Singleton
+{
+public:
+	static Singleton* GetInstance()
+	{
+		// 局部的静态对象，第一次调用函数时构造初始化
+		// C++11及之后这样写才可以
+		// C++11之前无法保证这里的构造初始化是线程安全
+		static Singleton _sint;
+		return &_sint;
+	}
+
+	void Print() {
+		cout << _x << " " << _y << " ";
+		for (auto& e : _vstr)
+			cout << e << " ";
+	}
+
+
+	void Addstr(string s) {
+		_vstr.push_back(s);
+	}
+	Singleton(const Singleton&) = delete;
+	Singleton& operator=(const Singleton&) = delete;
+
+
+private:
+	Singleton(int x = 0, int y = 0, vector<string> vstr = { "hello", "world" })
+		:_x(x)
+		, _y(y)
+		, _vstr(vstr)
+	{}
+
+	~Singleton()
+	{
+		cout << "~Singleton()" << endl;
+	}
+	int _x;
+	int _y;
+	vector<string> _vstr;
+};
 ```

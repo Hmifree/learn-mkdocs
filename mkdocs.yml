@@ -126,6 +126,8 @@ nav:
     - C-C++/hash.md
     - C-C++/Smart pointers.md
     - C-C++/Special category design.md
+    - C-C++/C++Type conversion.md
+    - C-C++/IO stream.md
   - Linux:
     - Linux/Processcontrol.md
     - Linux/juniorIO.md
@@ -136,6 +138,7 @@ nav:
     - algorithm/quicksort.md
     - algorithm/stack.md
     - algorithm/monotony stack queue.md
+    - algorithm/Tree.md
   - MYSQL数据库:
     - mysqldatabase/MYSQLinstall.md
     - mysqldatabase/mysql Database Basics.md

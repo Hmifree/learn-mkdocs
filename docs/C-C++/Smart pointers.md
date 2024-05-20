@@ -239,3 +239,126 @@ private:
 	T* _ptr;
 };
 ```
+
+shared_ptr还存在一个删除器,应用场景
+
+```cpp
+template<class T>
+struct DeleteArray
+{
+	void operator()(T* ptr)
+	{
+		delete[] ptr;
+	}
+};
+
+int main()
+{
+	shared_ptr<ListNode> p1(new ListNode(10));
+	shared_ptr<ListNode> p2(new ListNode[10], DeleteArray<ListNode>());
+	shared_ptr<FILE> p3(fopen("Test.cpp", "r"), [](FILE* ptr) {fclose(ptr); });
+	return 0;
+}
+```
+
+改造过后的shared_ptr
+```cpp
+template<class T>
+class shared_ptr
+{
+public:
+
+	template<class D>
+	shared_ptr(T* ptr, D del)
+		:_ptr(ptr)
+		,_pcount(new int(1))
+		,_del(del)
+	{}
+
+	// RAII
+	shared_ptr(T* ptr = nullptr)
+		:_ptr(ptr)
+		, _pcount(new int(1))
+	{}
+
+	// sp2(sp1)
+	shared_ptr(const shared_ptr<T>& sp)
+	{
+		_ptr = sp._ptr;
+		_pcount = sp._pcount;
+
+		// 拷贝时++计数
+		++(*_pcount);
+	}
+
+	// sp1 = sp4
+	// sp4 = sp4;
+	// sp1 = sp2;
+	shared_ptr<T>& operator=(const shared_ptr<T>& sp)
+	{
+		//if (this != &sp)
+		if (_ptr != sp._ptr)
+		{
+			release();
+
+			_ptr = sp._ptr;
+			_pcount = sp._pcount;
+
+			// 拷贝时++计数
+			++(*_pcount);
+		}
+
+		return *this;
+	}
+
+	void release()
+	{
+		// 说明最后一个管理对象析构了，可以释放资源了
+		if (--(*_pcount) == 0)
+		{
+			cout << "delete:" << _ptr << endl;
+			delete _ptr;
+			delete _pcount;
+		}
+	}
+
+	~shared_ptr()
+	{
+		// 析构时，--计数，计数减到0，
+		release();
+	}
+
+	int use_count()
+	{
+		return *_pcount;
+	}
+
+	// 像指针一样
+	T& operator*()
+	{
+		return *_ptr;
+	}
+
+	T* operator->()
+	{
+		return _ptr;
+	}
+
+	T* get() const
+	{
+		return _ptr;
+	}
+private:
+	T* _ptr;
+	int* _pcount;
+	function<void(T*)> _del = [](T* ptr){delete ptr;};
+};
+```
+
+再谈内存泄漏:
+
+什么是内存泄漏：内存泄漏指因为疏忽或错误造成程序未能释放已经不再使用的内存的情况。内
+存泄漏并不是指内存在物理上的消失，而是应用程序分配某段内存后，因为设计错误，失去了对
+该段内存的控制，因而造成了内存的浪费。
+内存泄漏的危害：长期运行的程序出现内存泄漏，影响很大，如操作系统、后台服务等等，出现
+内存泄漏会导致响应越来越慢，最终卡死。

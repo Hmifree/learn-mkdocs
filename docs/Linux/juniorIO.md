@@ -129,3 +129,4 @@ fd的分配规则： 最小的没有被使用的数组下标，会分配给最�
 close(1),然后再open一个新文件，然后在printf，就会发现printf写入的是那个新文件，这是由于fd = 1的stdout被改成了新文件，
 所以写入的是新文件。但是这样写会比较麻烦，所以有一个int dup2(int oldfd, int newfd);将old拷贝到new，所以dup2(fd, 1)
 就可以完成缓冲区。
+
