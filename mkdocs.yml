@@ -134,6 +134,8 @@ nav:
     - Linux/Inter-process communication.md
     - Linux/Network Fundamentals1.md
     - Linux/Network programming sockets.md
+    - Linux/Signal.md
+    - Linux/Multi-threaded.md
   - 算法:
     - algorithm/quicksort.md
     - algorithm/stack.md

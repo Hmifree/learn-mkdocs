@@ -1100,6 +1100,10 @@
       
         
       
+        
+      
+        
+      
     
     
       
@@ -1237,6 +1241,51 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      命名管道
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      system V共享内存
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      信号量原理
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      信号量理论
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      信号量的接口
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1279,6 +1328,48 @@
   
   <span class="md-ellipsis">
     网络编程套接
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Signal/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    信号
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Multi-threaded/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux多线程
   </span>
   
 
@@ -1793,6 +1884,51 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      命名管道
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      system V共享内存
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      信号量原理
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      信号量理论
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      信号量的接口
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1950,6 +2086,486 @@ if (rid == id)
 <p>当要写入的数据量不大于PIPE_BUF时，linux将保证写入的原子性。
 当要写入的数据量大于PIPE_BUF时，linux将不再保证写入的原子性。</p>
 <p>2.功能代码</p>
+<pre><code class="language-cpp">//processpool.cc
+
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;unistd.h&gt;
+#include &lt;vector&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;sys/wait.h&gt;
+#include &quot;task.hpp&quot;
+using namespace std;
+
+enum
+{
+    UsageError = 1,
+    ArgError,
+    PipeError
+};
+
+void Usage(const std::string &amp;proc)
+{
+    cout &lt;&lt; &quot;Usage:&quot; &lt;&lt; proc &lt;&lt; &quot; subprocess-num&quot; &lt;&lt; endl;
+}
+
+class Channel
+{
+public:
+    Channel(int wfd, pid_t sub_id, const std::string &amp;name)
+        : _wfd(wfd), _sub_process_id(sub_id), _name(name)
+    {
+    }
+
+    void PrintDebug()
+    {
+        cout &lt;&lt; &quot;wfd: &quot; &lt;&lt; _wfd &lt;&lt; &quot; &quot;;
+        cout &lt;&lt; &quot;id:&quot; &lt;&lt; _sub_process_id &lt;&lt; &quot; &quot;;
+        cout &lt;&lt; &quot;name&quot; &lt;&lt; _name &lt;&lt; endl;
+    }
+
+    string name()
+    {
+        return _name;
+    }
+
+    int wfd()
+    {
+        return _wfd;
+    }
+
+    pid_t pid()
+    {
+        return _sub_process_id;
+    }
+
+    void Close()
+    {
+        close(_wfd);
+    }
+
+    ~Channel()
+    {
+    }
+
+private:
+    int _wfd;
+    pid_t _sub_process_id;
+    string _name;
+};
+
+class ProcessPool
+{
+public:
+    ProcessPool(int sub_process_num)
+        : _sub_process_num(sub_process_num)
+    {
+    }
+
+    int CreateProcess(work_t work)
+    {
+        vector&lt;int&gt; fds;
+        for (int number = 0; number &lt; _sub_process_num; ++number)
+        {
+            int pipefd[2]{0};
+            int n = pipe(pipefd);
+            if (n &lt; 0)
+                return PipeError;
+            pid_t id = fork();
+            if (id == 0)
+            {
+                if (!fds.empty()) {
+                    cout &lt;&lt; &quot;close w fd:&quot;;
+                    for (auto fd : fds) 
+                    {
+                        close(fd);
+                        cout &lt;&lt; fd &lt;&lt; &quot; &quot;;
+                    }
+                    cout &lt;&lt; endl;
+                }
+                // child -&gt; r
+                close(pipefd[1]);
+                // TODO
+                dup2(pipefd[0], 0);
+                work(pipefd[0]);
+                exit(0);
+            }
+            string cname = &quot;Channel-&quot; + to_string(number);
+            // father
+            close(pipefd[0]);
+            chaneels.push_back(Channel(pipefd[1], id, cname));
+
+            // 把父进程的wfd保存
+            fds.push_back(pipefd[1]);
+        }
+        return 0;
+    }
+
+    int NextChannel()
+    {
+        static int next = 0;
+        int c = next++;
+        next %= chaneels.size();
+        return c;
+    }
+
+    void SendTaskCode(int index, uint32_t code)
+    {
+        cout &lt;&lt; &quot;send code: &quot; &lt;&lt; code &lt;&lt; &quot; to &quot; &lt;&lt; chaneels[index].name() &lt;&lt; &quot; sub process id: &quot; &lt;&lt; chaneels[index].pid() &lt;&lt; endl;
+        write(chaneels[index].wfd(), &amp;code, sizeof(code));
+    }
+
+    void KillAll()
+    {
+        for (auto &amp;chaneel : chaneels)
+        {
+            chaneel.Close();
+            pid_t pid = chaneel.pid();
+            pid_t rid = waitpid(pid, nullptr, 0);
+            if (rid == pid)
+            {
+                cout &lt;&lt; &quot;wait pid process: &quot; &lt;&lt; pid &lt;&lt; &quot; success...&quot; &lt;&lt; endl;
+            }
+            cout &lt;&lt; chaneel.name() &lt;&lt; &quot; close done&quot; &lt;&lt; &quot; sub process quit now &quot; &lt;&lt; chaneel.pid() &lt;&lt; endl;
+        }
+    }
+
+    void Wait()
+    {
+        // for (auto &amp;chaneel : chaneels) {
+        //     pid_t pid = chaneel.pid();
+        //     pid_t rid = waitpid(pid, nullptr, 0);
+        //     if (rid == pid) {
+        //         cout &lt;&lt; &quot;wait pid process: &quot; &lt;&lt; pid &lt;&lt; &quot; success...&quot; &lt;&lt; endl;
+        //     }
+        // }
+    }
+
+    void Debug()
+    {
+        for (auto &amp;chaneel : chaneels)
+        {
+            chaneel.PrintDebug();
+        }
+    }
+
+    ~ProcessPool()
+    {
+    }
+
+private:
+    int _sub_process_num;
+    vector&lt;Channel&gt; chaneels;
+};
+
+void CtrlProcessPool(ProcessPool *processpool_ptr, int cnt)
+{
+    while (cnt)
+    {
+        // a. 选择一个进程和通道
+        int chaneel = processpool_ptr-&gt;NextChannel();
+        // cout &lt;&lt; chaneel.name() &lt;&lt; endl;
+
+        // b.你要选择一个任务
+        uint32_t code = NextTask();
+
+        // c. 发送任务
+        processpool_ptr-&gt;SendTaskCode(chaneel, code);
+
+        sleep(1);
+        cnt--;
+    }
+}
+
+int main(int argc, char *argv[])
+{
+    if (argc != 2)
+    {
+        Usage(argv[0]);
+        return UsageError;
+    }
+    int sub_process_num = std::stoi(argv[1]);
+    if (sub_process_num &lt;= 0)
+        return ArgError;
+
+    srand((uint64_t)time(nullptr));
+    vector&lt;Channel&gt; chaneels;
+
+    // 1. 创建腾信信号和子进程
+    ProcessPool *processpool_ptr = new ProcessPool(sub_process_num);
+    processpool_ptr-&gt;CreateProcess(worker);
+    // processpool_ptr-&gt;Debug();
+
+    // 2. 控制子进程
+    CtrlProcessPool(processpool_ptr, 10);
+    cout &lt;&lt; &quot;task: run done&quot; &lt;&lt; endl;
+    // sleep(100);
+
+    // 3.回收子进程:a.你怎么让所有的子进程退出?
+    processpool_ptr-&gt;KillAll();
+    // b.你怎么让所有已经退出的子进程把他进行资源回收wait/waitpid
+    processpool_ptr-&gt;Wait();
+    delete processpool_ptr;
+    // wait sub process
+    return 0;
+}
+
+// task.hpp
+
+#pragma once
+#include &lt;iostream&gt;
+#include &lt;unistd.h&gt;
+using namespace std;
+
+typedef void (*work_t)(int);
+typedef void (*task_t)(int, pid_t);
+void PrintLog(int fd, pid_t pid)
+{
+    cout &lt;&lt; &quot;sub_process: &quot; &lt;&lt; pid &lt;&lt; &quot;, fd : &quot; &lt;&lt; fd &lt;&lt; &quot;, task is : print log task\n&quot;
+         &lt;&lt; endl;
+}
+
+void ReloadConf(int fd, pid_t pid)
+{
+    cout &lt;&lt; &quot;sub_process: &quot; &lt;&lt; pid &lt;&lt; &quot;, fd : &quot; &lt;&lt; fd &lt;&lt; &quot;, task is : reload conf task\n&quot;
+         &lt;&lt; endl;
+}
+
+void ConnectMysql(int fd, pid_t pid)
+{
+    cout &lt;&lt; &quot;sub_process: &quot; &lt;&lt; pid &lt;&lt; &quot;, fd : &quot; &lt;&lt; fd &lt;&lt; &quot;, task is : connect mysql conf\n&quot;
+         &lt;&lt; endl;
+}
+
+task_t tasks[3] = {PrintLog, ReloadConf, ConnectMysql};
+
+uint32_t NextTask()
+{
+    return rand() % 3;
+}
+
+void worker(int fd)
+{
+    // sleep(100);
+    while (true)
+    {
+        uint32_t command_code = 0;
+        ssize_t n = read(0, &amp;command_code, sizeof(command_code));
+        if (n == sizeof(command_code))
+        {
+            if (command_code &gt;= 3)
+                continue;
+            tasks[command_code](fd, getpid());
+        }
+        else if (n == 0)
+        {
+            cout &lt;&lt; &quot; sub process: &quot; &lt;&lt; getpid() &lt;&lt; &quot; quit now...&quot; &lt;&lt; endl;
+            break;
+        }
+    }
+}
+</code></pre>
+<h2 id="_3">命名管道</h2>
+<p>1.理论</p>
+<p>让不同的进程之间可以通信,让不同的进程看到同一份资源.</p>
+<ol>
+<li>代码</li>
+</ol>
+<pre><code class="language-cpp">// PipeServer.cc
+#include &quot;Comm.hpp&quot;
+int main()
+{
+    Fifo fifo(Path);
+
+    int rfd = open(Path, O_RDONLY);
+    if (rfd &lt; 0)
+    {
+        cerr &lt;&lt; &quot;open failed, errno: &quot; &lt;&lt; errno &lt;&lt; &quot;, errstring&quot; &lt;&lt; strerror(errno) &lt;&lt; endl;
+        return 1;
+    }
+    // 如果我们的写端没打开,读先打开,open的时候就会阻塞,直到把写端打开,读open才会返回
+    cout &lt;&lt; &quot;open success&quot; &lt;&lt; endl;
+    char buffer[1024];
+    while (true)
+    {
+        ssize_t n = read(rfd, buffer, sizeof(buffer) - 1);
+        if (n &gt; 0)
+        {
+            buffer[n] = 0;
+            cout &lt;&lt; &quot;client say&quot; &lt;&lt; buffer &lt;&lt; endl;
+        }
+        else if (n == 0)
+        {
+            cout &lt;&lt; &quot;client quit, me too&quot; &lt;&lt; endl;
+            break;
+        }
+        else
+        {
+            cerr &lt;&lt; &quot;read failed, errno: &quot; &lt;&lt; errno &lt;&lt; &quot;, errstring&quot; &lt;&lt; strerror(errno) &lt;&lt; endl;
+            break;
+        }
+    }
+    close(rfd);
+    return 0;
+}
+
+// PipeClient.cc
+#include &quot;Comm.hpp&quot;
+
+int main() {
+    int wfd = open(Path, O_WRONLY);
+    if (wfd &lt; 0)
+    {
+        cerr &lt;&lt; &quot;open failed, errno: &quot; &lt;&lt; errno &lt;&lt; &quot;, errstring&quot; &lt;&lt; strerror(errno) &lt;&lt; endl;
+        return 1;
+    }
+    string inbuffer;
+    while (true)
+    {
+        cout &lt;&lt; &quot;Please Enter Your Message&quot;;
+        getline(cin, inbuffer);
+        if (inbuffer == &quot;quit&quot;)
+            break;
+        ssize_t n = write(wfd, inbuffer.c_str(), inbuffer.size());
+        if (n &lt; 0)
+        {
+            cerr &lt;&lt; &quot;write failed, errno: &quot; &lt;&lt; errno &lt;&lt; &quot;, errstring&quot; &lt;&lt; strerror(errno) &lt;&lt; endl;
+            break;
+        }
+    }
+    close(wfd);
+    return 0;
+}
+
+//Comm.hpp
+#ifndef __COMM_HPP__
+#define __COMM_HPP__
+
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;cerrno&gt;
+#include &lt;cstring&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;fcntl.h&gt;
+using namespace std;
+
+#define Mode 0666
+#define Path &quot;fifo&quot;
+class Fifo {
+    public:
+        Fifo(const string &amp;path)
+            :_path(path)
+        {
+            umask(0);
+            int n = mkfifo(_path.c_str(), Mode);
+            if (n == 0) {
+                cout &lt;&lt; &quot;mkfifo success&quot; &lt;&lt; endl;
+            }
+            else {
+                cerr &lt;&lt; &quot;mkfifo failed, errno: &quot; &lt;&lt; errno &lt;&lt; &quot;, errstring&quot; &lt;&lt; strerror(errno) &lt;&lt; endl;
+            }
+        }
+
+        ~Fifo()
+        {
+            int n = unlink(_path.c_str());
+            if (n == 0) {
+                cout &lt;&lt; &quot;remove fifo file:&quot; &lt;&lt; _path &lt;&lt; &quot; success&quot; &lt;&lt; endl;
+            }
+            else {
+                cerr &lt;&lt; &quot;remove failed, errno: &quot; &lt;&lt; errno &lt;&lt; &quot;, errstring: &quot; &lt;&lt; strerror(errno) &lt;&lt; endl;
+            }
+        }
+    private:
+        string _path; 
+};
+
+#endif
+</code></pre>
+<h2 id="system-v">system V共享内存</h2>
+<p>共享内存在内核中同时可以存在很多个-OS必须要管理所有的共享内存-&gt;如何管理呢?先描述,在组织-&gt;系统会存在很多共享内存哦-&gt;你怎么保证
+两个或者多个不同的进程看到的是同一个共享内存呢?-&gt;要给共享内存提供一个唯一性的标识！</p>
+<p>IPC_CREAT and IPC_EXCL</p>
+<p>IPC_CREAT:如果共享内存不存在,就创建。如果共享内存已经存在,直接获取它.</p>
+<p>IPC_EXCL:不能单独使用,没意义</p>
+<p>IPC_CREAT|IPC_EXCL:如果共享内存不存在,就创建。如果共享内存已经存在,出错返回.</p>
+<p>如果创建成功的,则一定是一个新的共享内存.</p>
+<p>int shmget(key_t key, size_t size, int shmflg);</p>
+<p>1.这个key怎么形成?意义是什么?</p>
+<p>key_t ftok(const char *pathname, int proj_id);</p>
+<p>int shmget(key_t key, size_t size, int shmflg);</p>
+<p>是多少,不重要,只要能够标识唯一性即可.</p>
+<p>2.为什么要让用户传入呢?</p>
+<p>共享内存,如果结束进程,我们没有主动释放它,则一直存在,共享内存的生命周期,随内核--除非重启系统</p>
+<p>文件操作,一个进程打开一个文件,进程退出的时候,这个被打开的文件就会被系统释放掉--文件的生命周期随进程</p>
+<p><strong>缺点</strong>:默认情况,shm读取方,根本就没管写入方。共享内存不提供进程间协同的任何机制。</p>
+<p><strong>优点</strong>:共享内存是所有进程间通信最快的!  </p>
+<h2 id="_4">信号量原理</h2>
+<p>1.对于共享资源进行保护,是多个执行流场景下,一个比较常见重要的话题</p>
+<p>2.互斥:在访问一部分共享资源的时候,任何时刻只有我一个人访问。同步:访问资源在安全的前提下,具有一定是顺序性</p>
+<p>3.被保护起来任何时刻只允许一个执行访问的公共资源 --- 临界资源</p>
+<p>4.能访问临界资源的代码,我们叫做临界区 -- 非临界区 --所谓的保护公共资源-临界志愿 -&gt; 保护公共资源的本质:是程序员保护临界区</p>
+<p>5.原子性:操作对象的时候,只有两种状态,要么是还没开始,要么已经结束.</p>
+<h2 id="_5">信号量理论</h2>
+<p>信号量(信号灯) -- 看电影 -- 资源 -- 本质: 对资源的预定机制 -- 资源不一定被我持有,才是我的,只要我预定了,在未来的某个时间,就是我的.</p>
+<p>我有多少资源,最多我卖多少票 --- 每一份资源不会被并发访问</p>
+<p>只有一个座位,就只有一张票 --- 电影院资源是被整体使用的</p>
+<p>只要买票的过程是合理的-&gt;电影院是公共资源,座位-&gt;切分电影院,让电影院里面有无数个小资源</p>
+<p>信号量:本质是一个计数器,描述临界资源的计数器</p>
+<p>进程:申请信号量[申请成功才能继续往下走] --- 买票 --- 预定 --- 信号量申请成功,就一定有你的资源</p>
+<p>释放信号量 --- "看完电影" --- 别人可以继续申请了</p>
+<p>多进程场景,int能不能实现信号量的效果?</p>
+<p>不能.</p>
+<p>1.无法在进程间共享 -- 让不同的进程先看到相同一份资源 -- 计数器资源!!</p>
+<p>2.count++,count--不是原子的</p>
+<p>申请sem和释放sem来保护临界资源,大家都要遵守的规则</p>
+<p>所有的进程，访问临界资源，都必须先申请信号量---所有的进程都得先看到同一个信号量--信号量本身就是共享资源！！！---信号量的申请(--)和释放</p>
+<p>如果信号量就是1呢?</p>
+<p>不就是互斥吗!!!二元信号量就是一把锁。</p>
+<p>1.申请信号量资源</p>
+<p>2.释放信号量资源</p>
+<p>3.PV操作</p>
+<p>一个信号量就是一个计数器</p>
+<p>一次申请多个信号量 VS 信号量是几 完全不同的概念</p>
+<p>sem_t sems[4]</p>
+<h2 id="_6">信号量的接口</h2>
+<p>1.semget(信号量申请)</p>
+<pre><code class="language-cpp">#include &lt;sys/types.h&gt;
+#include &lt;sys/ipc.h&gt;
+#include &lt;sys/sem.h&gt;
+int semget(key_t key, int nsems, int semflg);
+// int:信号量集标识符
+// nsems:你想创建几个信号量
+</code></pre>
+<p>2.semctl(信号量删除)</p>
+<pre><code class="language-cpp">#include &lt;sys/types.h&gt;
+#include &lt;sys/ipc.h&gt;
+#include &lt;sys/sem.h&gt;
+int semctl(int semid, int semnum, int cmd, ...);
+</code></pre>
+<p>3.semop(PV操作)</p>
+<pre><code class="language-cpp">#include &lt;sys/types.h&gt;
+#include &lt;sys/ipc.h&gt;
+#include &lt;sys/sem.h&gt;
+int semop(int semid, struct sembuf *sops, unsigned nsops);
+// spos = -1, P操作
+// spos = 1, V操作
+</code></pre>
+<p>共享内存 信号量 消息队列 --- 共性 --- OS特意设计的。System V进程间通信的. --- OS注定要对IPC资源 -&gt; 先描述，再组织</p>
+<p>内核中，所有的描述管理IPC资源的结构体，第一个成员都一样kern_ipc_perm(C++多态)</p>
+<p>我们怎么知道它的类型是什么呢?? </p>
+<pre><code class="language-cpp">#define IPC_TYPE_SHM 0x1
+#define IPC_TYPE_MSG (0x1 &lt;&lt; 1)
+#define IPC_TYPE_SEM(0x1 &lt;&lt; 2)
+shmid_kernel* (kern_ip_perm* p) {
+    if (o-&gt;mode &amp; IPC_TYPE_SHM)
+        return (shmid_kernel*)p;
+    else
+        return null;
+}
+</code></pre>
 
 <!-- Source file information -->
 
